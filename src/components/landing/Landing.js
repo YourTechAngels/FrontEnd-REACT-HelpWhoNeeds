@@ -1,13 +1,13 @@
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
 const Landing = () => {
-    let history = useHistory();
+    // let history = useHistory();
 
-    const handleClick = () => {
-        alert("yay");
-        history.push("/login");
-    };
+    // const handleClick = () => {
+    //     alert("yay");
+    //     history.push("/login");
+    // };
 
     return (
         <div id="content-wrapper" align="center">
@@ -22,17 +22,19 @@ const Landing = () => {
                 this app brings some comfort and relief to the users with a sense of
                 moral and social obligation.
     </p>
-
-            <Button
+    <Link to={'/login'}>
+              <Button
                 variant="outlined"
                 color="default"
-                onClick={() => {
-                    alert("This works on every component!");
-                }}
+                // onClick={() => {
+                //     alert("This works on every component!"); }}
+                
             >
                 I need Help
     </Button>
-            <Button variant="outlined" color="default" onClick={handleClick}>
+    </Link>
+    
+            <Button variant="outlined" color="default" onClick={console.log('Hi!')}>
                 I can Help
     </Button>
         </div>
