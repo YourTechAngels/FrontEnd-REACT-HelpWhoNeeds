@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../Context";
 import { makeStyles, Button } from "@material-ui/core";
 import { useEffect } from "react";
 
@@ -20,15 +21,13 @@ const useStyles = makeStyles({
 const Landing = () => {
     
     const classes = useStyles();
-    const [user, setUser] = useState(" ");
-
     useEffect( () => {
-        console.log("in useEffect");
-        return () =>{
-            console.log("in useEffect Cleanup");
-        }
-    },[user])
-    
+       return () =>{
+         }
+     })
+
+    const [context, setContext] = useContext(Context);
+     
     return (
             <div className={classes.divContentWrapper} >
                 <h1>Help Who Needs</h1>
@@ -40,7 +39,7 @@ const Landing = () => {
                     helping with chores such as shopping, GP visits, prescriptions, dog
                     walking or just some social contact with the appropriate measures in
                     place. We hope this app brings some comfort and relief to the users
-                    with a sense of moral and social obligation. {user}
+                    with a sense of moral and social obligation. 
         </p>
 
         <p className={classes.pInfo}> If you would like help or need any assistant using our system, please call <strong>0800 123 4567</strong>.</p>
@@ -51,7 +50,7 @@ const Landing = () => {
                     component={Link}
                     to={"/login/Vulnerable"}
                     onClick={() => {
-                        setUser("Vulnerable");
+                        setContext("Vulnerable user");
                 }}
                 >
                     I need Help
@@ -63,8 +62,7 @@ const Landing = () => {
                     color="default"
                     component={Link}
                     to={"/login/Volunteer"}
-                    onClick={() => {
-                        setUser("Volunteer");}}
+                    onClick={() => { setContext("Volunteer"); }}
                 >
                     I can Help
         </Button>

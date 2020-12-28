@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from "@material-ui/core/Button";
 import AddressForm from './AddressForm';
+import { Context } from "../Context";
 
 const useStyles = {
   textFld: { width: '85%', height: 40, paddingLeft: 8 } , 
@@ -19,7 +20,7 @@ const useStyles = {
 };
 
 
-  export default function VolunteerRegistration(props) {
+  export default function Registration(props) {
 
     const initialInputState = { firstName : "" , lastName:"" , DateOfBirth:"", email:"", password:""  } 
     
@@ -37,12 +38,15 @@ const useStyles = {
       alert('Data has been successfully saved')
       console.log(formData)
       }
+
+    const context = useContext(Context);
    
    return (
      
    <React.Fragment>
      
-      <Typography variant="h5" align="center"> Volunteer Registration </Typography>
+     <h2 align="center" > {context} Registration </h2>
+      {/* <Typography variant="h5" align="center"> {context} Registration </Typography> */}
 
       <p> Please enter your details here</p>
       <form onSubmit={handleSubmit} >      
@@ -79,7 +83,8 @@ const useStyles = {
           <TextField
             id="DateOfBirth"
             name="DateOfBirth"
-            label="Date Of Birth"
+            type="date"
+            label=""
             onChange = { handleChange }
             value= {DateOfBirth || ''}
             variant="outlined"

@@ -1,23 +1,24 @@
-import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { Context } from "../Context";
+import {useContext} from 'react';
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
+            <Link color="inherit" to="https://material-ui.com/">
                 Your Website
     </Link>{" "}
             {new Date().getFullYear()}
@@ -48,8 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
     const classes = useStyles();
-    let param = useParams();
-
+    const context = useContext(Context);
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -60,7 +60,7 @@ export default function SignIn() {
                 <Typography component="h1" variant="h5">
                     Sign in
         </Typography>
-                <p>user: {param.userType}</p>
+                 
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
@@ -99,7 +99,7 @@ export default function SignIn() {
         </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
+                            <Link to="#" variant="body2">
                                 Forgot password?
         </Link>
                         </Grid>
@@ -110,7 +110,7 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         component={Link}
-                        to={"/volunteerRegistration"}
+                        to={"/registration/"}
                         className={classes.submit}
 
                     >Sign Up
